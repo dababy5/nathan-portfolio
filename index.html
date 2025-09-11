@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <meta charset="UTF-8">
+  <head>
+    <title>Nathan Ramon Lau</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+     <link rel="icon" href="mech_e_asian_guy_256.png" type="image/x-icon">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="bbcontainer">
+      <div class="bbbox">
+        <div class="card" id='front'><img src=finale.png></div>
+        <div class="card" onclick="window.location.href='portfolio.html'" id="back"><div class="iframe-wrapper"><iframe src="portfolio.html" class="preview"></iframe></div></div>
+        <div class="card" onclick="window.location.href='resume.html'"id='left'><iframe src="resume.html" class="preview"></iframe></div>
+        <div class="card" onclick="window.location.href='contact.html'"id='right'><iframe src="contact.html" class="preview"></iframe></div>
+        <div class="card" onclick="window.location.href='aboutme.html'"id='top'><iframe src="aboutme.html" class="preview"></iframe></div>
+        <div class="card" onclick="window.location.href='goals.html'"id='bottom'><iframe src="goals.html" class="preview"></iframe></div>
+      </div>
+    </div>
+  <div class="section" id="sec1">Front</div>
+  <div class="section" id="sec2">Back</div>
+  <div class="section" id="sec3">Left</div>
+  <div class="section" id="sec4">Right</div>
+  <div class="section" id="sec5">Top</div>
+  <div class="section" id="sec6">Bottom</div>
+  </body>
+  <script>
+const cube = document.querySelector('.bbbox');
+
+const rotations = {
+  sec1: "rotateY(0deg)",     
+  sec2: "rotateY(180deg)",   
+  sec3: "rotateY(-90deg)",   
+  sec4: "rotateY(90deg)",    
+  sec5: "rotateX(-90deg)",  
+  sec6: "rotateX(90deg)"     
+};
+
+
+document.querySelectorAll('.section').forEach(section => {
+  section.addEventListener('click', () => {
+    const id = section.id;
+    cube.style.transform = rotations[id];
+  });
+});
+
+let isDragging = false;
+let startX, startY;
+let currentX = 0, currentY = 0;
+
+window.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.clientX;
+  startY = e.clientY;
+});
+
+
+window.addEventListener('mouseup', (e) => {
+  if (isDragging) {
+    let deltaX = e.clientX - startX;
+    let deltaY = e.clientY - startY;
+    currentX += deltaX / 2;
+    currentY -= deltaY / 2;
+  }
+  isDragging = false;
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+
+  let deltaX = e.clientX - startX;
+  let deltaY = e.clientY - startY;
+
+  cube.style.transform = `rotateX(${currentY - deltaY / 2}deg) rotateY(${currentX + deltaX / 2}deg)`;
+});
+</script>
+
+</html>

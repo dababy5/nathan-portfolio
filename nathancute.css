@@ -1,0 +1,40 @@
+.first-part{
+  display: flex;
+  margin: 0px;
+  justify-content: space-between;
+  height:10vw;
+}
+.first-cute-second{
+  display:flex;
+  align-items:center;
+  margin:0px;
+  padding-right:6vw;
+}
+.rawr-xd{
+  display:flex;
+  align-items:center;
+  margin:0px;
+  padding-left:6vw;
+}
+.fuck-da-dog{
+  display:grid;
+  grid-template-columns:33% 33% 33%;
+  padding-left:6vw;
+  padding-right:6vw;
+  column-gap: 2vw;;
+}
+.riley{
+  padding-left:6vw;
+  padding-right:6vw;
+}
+i{
+  font-weight: 200;
+}
+.aw-hell-nah{
+  display: flex;
+  flex-direction: column;
+  gap:1vw;
+}
+.bruh{
+  padding-left:2.9vw;
+}
