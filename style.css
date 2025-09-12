@@ -10,6 +10,9 @@
   -moz-user-drag: none;     
   -o-user-drag: none;          
 }
+h2,p{
+  font-family: 'Glitch Goblin'; font-weight: normal; font-style: normal;
+}
 body{
   height:100vh;
   background: radial-gradient(rgb(208, 217, 218),rgb(149, 152, 155));
@@ -22,6 +25,43 @@ body{
   left: 60vw;
   transform:translate(-50%,-50%);
   perspective:1000px;
+}
+.typewriter{
+  display:flex;
+  justify-content:center;
+}
+.typewriter h2{
+  font-family:'Glitch Goblin';
+  font-size: 1.5rem;
+  margin-inline:auto;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:1px solid;
+  animation:typing 3s steps(16) forwards,
+  blink 1s step-end infinite;
+}
+.typewriter p{
+  font-family:'Glitch Goblin';
+  font-size: 1.5rem;
+  margin-inline:auto;
+  overflow:hidden;
+  white-space:nowrap;
+  border-right:1px solid;
+  animation:typing 3s steps(33) forwards,
+  blink 1s step-end infinite;
+}
+@keyframes typing{
+  from{
+    width:0;
+  }
+  to {
+    width:100%;
+  }
+}
+@keyframes blink{
+  50%{
+    border-color:transparent;
+  }
 }
 .bbbox{
   height:250px;
@@ -36,6 +76,7 @@ body{
 iframe{
   width:100%;
   height:100%;
+  overflow:hidden;
 }
 img{
   width:100%;
@@ -77,6 +118,7 @@ img{
 }
 iframe.preview {
   pointer-events: none;
+  overflow:hidden;
 }
 .iframe-wrapper {
   width: 100%;
@@ -90,6 +132,7 @@ iframe.preview {
   transform: scale(0.3,0.2);     
   transform-origin: top left;
   border: none;
+  overflow:hidden;
 }
 
 .section {
@@ -107,4 +150,3 @@ iframe.preview {
 #sec4 { background: #777; }
 #sec5 { background: #999; }
 #sec6 { background: #bbb; }
-
