@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <meta charset="UTF-8">
   <head>
+    <meta charset="UTF-8">
     <title>Nathan Ramon Lau</title>
     <link href="style.css" rel="stylesheet" type="text/css">
      <link rel="icon" href="mech_e_asian_guy_256.png" type="image/x-icon">
@@ -9,6 +9,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+  <div id="tsparticles"></div>
     <div class="bbcontainer">
       <div class="bbbox">
         <div class="card" id='front'><img src=finale.png></div>
@@ -19,12 +20,14 @@
         <div class="card" onclick="window.location.href='goals.html'"id='bottom'><iframe src="goals.html" class="preview"></iframe></div>
       </div>
     </div>
-  <div class="section" id="sec1">Front</div>
-  <div class="section" id="sec2">Back</div>
-  <div class="section" id="sec3">Left</div>
-  <div class="section" id="sec4">Right</div>
-  <div class="section" id="sec5">Top</div>
-  <div class="section" id="sec6">Bottom</div>
+    <div class="section">
+  <div class='thingy'id="sec1">Front</div>
+  <div class='thingy'id="sec2">Back</div>
+  <div class='thingy'id="sec3">Left</div>
+  <div class='thingy'id="sec4">Right</div>
+  <div class='thingy'id="sec5">Top</div>
+  <div class='thingy'id="sec6">Bottom</div>
+  </div>
   <div class="typewriter">
     <div>
       <h2>
@@ -36,7 +39,22 @@
       </p>
     </div>
   </div>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 120 },
+        color: { value: "#ffffff" },
+        size: { value: { min: 2, max: 4 } },
+        opacity: { value: { min: 0.5, max: 1 } },
+        move: { enable: true, speed: 1 }
+      }
+    });
+  </script>
+</body>
+</html>
+
   <script>
 const cube = document.querySelector('.bbbox');
 
@@ -50,7 +68,7 @@ const rotations = {
 };
 
 
-document.querySelectorAll('.section').forEach(section => {
+document.querySelectorAll('.thingy').forEach(section => {
   section.addEventListener('click', () => {
     const id = section.id;
     cube.style.transform = rotations[id];
@@ -87,5 +105,5 @@ window.addEventListener('mousemove', (e) => {
   cube.style.transform = `rotateX(${currentY - deltaY / 2}deg) rotateY(${currentX + deltaX / 2}deg)`;
 });
 </script>
-
+</body>
 </html>

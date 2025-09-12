@@ -8,6 +8,20 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
+    <div id="particles"></div>
     <p>rawr</p>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+<script>
+  tsParticles.load("particles", {
+    background: { color: "transparent" },
+    particles: {
+      number: { value: 80 },
+      color: { value: "#ffffff" },
+      size: { value: 3 },
+      opacity: { value: 0.8 },
+      move: { enable: true, speed: 1.2 }
+    }
+  });
+</script>
 </html>
