@@ -20,14 +20,18 @@
         <div class="card" onclick="window.location.href='goals.html'"id='bottom'><iframe src="goals.html" class="preview"></iframe></div>
       </div>
     </div>
-    <div class="section">
-  <div class='thingy'id="sec1">Front</div>
-  <div class='thingy'id="sec2">Back</div>
-  <div class='thingy'id="sec3">Left</div>
-  <div class='thingy'id="sec4">Right</div>
-  <div class='thingy'id="sec5">Top</div>
-  <div class='thingy'id="sec6">Bottom</div>
-  </div>
+<div class="section">
+    <button class="arrow left">&#8249;</button>
+    <div class="items">
+    <div class='thingy item active'id="sec1">Front</div>
+    <div class='thingy item'id="sec2">Back</div>
+    <div class='thingy item'id="sec3">Left</div>
+    <div class='thingy item'id="sec4">Right</div>
+    <div class='thingy item'id="sec5">Top</div>
+    <div class='thingy item'id="sec6">Bottom</div>
+    </div> 
+    <button class="arrow right" >&#8250;</button>
+</div>
   <div class="typewriter">
     <div>
       <h2>
@@ -58,22 +62,14 @@
   <script>
 const cube = document.querySelector('.bbbox');
 
-const rotations = {
-  sec1: "rotateY(0deg)",     
-  sec2: "rotateY(180deg)",   
-  sec3: "rotateY(-90deg)",   
-  sec4: "rotateY(90deg)",    
-  sec5: "rotateX(-90deg)",  
-  sec6: "rotateX(90deg)"     
-};
-
-
-document.querySelectorAll('.thingy').forEach(section => {
-  section.addEventListener('click', () => {
-    const id = section.id;
-    cube.style.transform = rotations[id];
-  });
-});
+const rotations = [
+  "rotateY(0deg)",     
+  "rotateY(180deg)",   
+  "rotateY(-90deg)",   
+  "rotateY(90deg)",    
+  "rotateX(-90deg)",  
+  "rotateX(90deg)"     
+  ];
 
 let isDragging = false;
 let startX, startY;
@@ -84,7 +80,6 @@ window.addEventListener('mousedown', (e) => {
   startX = e.clientX;
   startY = e.clientY;
 });
-
 
 window.addEventListener('mouseup', (e) => {
   if (isDragging) {
@@ -104,6 +99,53 @@ window.addEventListener('mousemove', (e) => {
 
   cube.style.transform = `rotateX(${currentY - deltaY / 2}deg) rotateY(${currentX + deltaX / 2}deg)`;
 });
+const items = document.querySelectorAll('.item');
+const leftBtn = document.querySelector('.arrow.left');
+const rightBtn = document.querySelector('.arrow.right');
+let index = 0; 
+
+function updateCarousel() {
+  items.forEach((item, i) => {
+    let offset = (i - index + items.length) % items.length;
+
+    if (offset === 0) {
+      item.classList.add("active");
+      item.style.transform = `translateX(0) scale(1.1)`;
+      item.style.opacity = 1;
+      item.style.zIndex = 2;
+    } else if (offset === 1) {
+      item.classList.remove("active");
+      item.style.transform = `translateX(150px) scale(0.9)`;
+      item.style.opacity = 0.6;
+      item.style.zIndex = 1;
+    } else if (offset === items.length - 1) {
+      item.classList.remove("active");
+      item.style.transform = `translateX(-150px) scale(0.9)`;
+      item.style.opacity = 0.6;
+      item.style.zIndex = 1;
+    } else {
+      item.classList.remove("active");
+      item.style.transform = `translateX(0) scale(0.7)`;
+      item.style.opacity = 0;
+      item.style.zIndex = 0;
+    }
+  });
+ 
+  cube.style.transform = rotations[index];
+}
+
+function move(direction) {
+  index += direction;
+  if (index < 0) index = items.length - 1;
+  if (index >= items.length) index = 0;
+  updateCarousel();
+}
+
+leftBtn.addEventListener('click', () => move(-1));
+rightBtn.addEventListener('click', () => move(1));
+
+updateCarousel();
+
 </script>
 </body>
 </html>

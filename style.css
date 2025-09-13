@@ -20,12 +20,12 @@ body{
 }
 #particles {
   position: fixed;
-  inset: 0;             /* top:0; right:0; bottom:0; left:0 */
-  z-index: 0;           /* send behind your content */
-  pointer-events: none; /* don't block clicks */
+  inset: 0;            
+  z-index: 0;           
+  pointer-events: none; 
 }
 .bbcontainer, .typewriter, .section {
-  position: relative;    /* needed for z-index to apply */
+  position: relative;    
   z-index: 1;
 }
 .bbcontainer{
@@ -170,14 +170,49 @@ iframe.preview {
 }
 
 .section {
-  height: 10%;              
   display: flex;
-  font-size: 3rem;
-  color: white;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  left:44.34vw;
+  top:14vh;
+
 }
-#sec1 { background: #111; }
-#sec2 { background: #333; }
-#sec3 { background: #555; }
-#sec4 { background: #777; }
-#sec5 { background: #999; }
-#sec6 { background: #bbb; }
+.items {
+  position: relative;
+  width: 400px;   /* adjust to fit */
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.item {
+  position: absolute;
+  font-size: 2rem;
+  color: #999;
+  opacity: 0.4;
+  filter: blur(2px);
+  transition: all 0.4s ease;
+  margin-top:10px;
+}
+.item.active{
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #d3d3d3;
+  opacity: 1;
+  filter: none;
+  transform: translateX(0) scale(1.1);
+}
+.arrow {
+  background: none;
+  border: none;
+  font-size: 4rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+.arrow:hover {
+  color: #000;
+}
+
